@@ -1,153 +1,132 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #                                                                                                                                                                      #
-# **Investigating Drivers For Telco customer churn - A project on Machine Learning Classification Models**(Level1)                                                
+# **Investigating Drivers For Telco customer churn - A project on Machine Learning Classification Models**                                               
 #                                                                                                                                                                      # 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## **Project Description** (Level 2)
+## **Project Description** 
 
-
+### This project aims to analyze customer churn at a Telco company to understand the factors influencing customer attrition. By building a predictive model, the project seeks to provide insights that can lead to effective retention strategies, ultimately benefiting the Telco's business.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## **Project Goal** (Level 2)
+## **Project Goal** 
 
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-## **Initial Thoughts** (Level 2)
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-## **The Plan** (Level 2) 
-
-- **Acquire data from SQL**
-- **Prepare data that's acquired**
-  - &#9733; Create Engineered columns from existing data
-    - &#9642; Sub-item A
-    - &#9642; Sub-sub-item 1
-    - &#9642; Sub-sub-item 2
-  - &#9733; Explore data in search of drivers of churn
-      - Answer the following initial questions
-        - &#9642; Are customers with DSL more or less likely to churn?
-        - &#9642; What month are customers most likely to churn and does that depend on their contract type?
-        - &#9642; Is there a service that is associated with more churn than expected?  
-        - &#9642; Is there a service that is associated with more churn than expected?  
-        - &#9642; Do customers who churn have a higher average monthly spend than those who don't?
-
-    
-
-
-
-- &#9733; Explore data in search of drivers of upsets
-  - &#9733; Explore data in search of drivers of upsets
-
-  - &#9642; Sub-item B
-- Main Item 2
-  - &#9642; Sub-item C
-    - &#9642; Sub-sub-item 3
-
-
-
- Explore data in search of drivers of
-Aquire data from Kaggle
-
-Prepare data
-
-Create Engineered columns from existing data
-upset
-rating_difference
-game_rating
-lower_rated_white
-time_control_group
-Explore data in search of drivers of upsets
-
-Answer the following initial questions
-How often do upsets occur?
-Does first move advantage affect upsets?
-Does a game being rated affect upsets?
-Does the average rating of both players have an effect on upsets?
-Does time block affect upsets?
-Does a player's choice of opening affect upsets?
-Develop a Model to predict if a chess game will end in an upset
-
-Use drivers identified in explore to build predictive models of different types
-Evaluate models on train and validate data
-Select the best model based on highest accuracy
-Evaluate the best model on test data
-Draw conclusions
+###  The main goals of the Telco customer churn project are
+  - &#9733; Identify Churn Drivers 
+  - &#9733; Build three models, pick the best
+  - &#9733; Improve customer Retention Strategies
+  - &#9733; Reduce Churn Rate
+  - &#9733; Enhance Customer Experience
+  - &#9733; Increase Revenue and Profitability
+  - &#9733; Data-Driven Decision Making
+  - &#9733; Continuous Improvement
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-## **Data Dictionary** (Level 2) 
+## **Initial Thoughts**
 
-| Name      | Age | Occupation |
-| --------- | --- | ---------- |
-| John      | 30  | Developer  |
-| Emily     | 25  | Designer   |
-| Michael   | 28  | Engineer   |
-     
+### In the early stages, we're focusing on understanding Telco churn, building a predictive model from collected data, and using these insights to smartly reduce customer attrition. This foundational step sets the path for using data effectively to keep more customers and improve overall business results.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## **The Plan** 
+
+- &#9733; Acquire data from SQL:
+- &#9733; Prepare data that's acquired:
+       - ** Feature Selection/Engineering
+           - &#9642; Encoding categorical columns
+           - &#9642; Encoding binary columns
+           - &#9642; preprocess_numerical_columns
+- &#9733; Explore data in search of drivers of churn:
+      - **  Answer the following initial questions
+           - &#9642; Why are customers churning?
+           - &#9642; What can stop them ?
+           - &#9642; How does it affect the company?  
+           - &#9642; Is the company's service quality adequate?  
+           - &#9642; Is the pricing competitive?
+
+- &#9733; Model Selection:
+      - **  Choose classification algorithms 
+           - &#9642; Logistic Regression
+           - &#9642; Random Forest
+           - &#9642; K-Nearest Neighbors (KNN)
+- &#9733; Data Splitting and Model Training:
+      - **  Divide the dataset into train,validate,test 
+           - &#9642; Train chosen models on training dataset             
+- &#9733; Model Evaluation:
+      - **  Check performance of models on test/validate dataset
+      - **  metrics used 
+                - &#9642; accuracy
+                - &#9642; precision
+                - &#9642; recall
+                - &#9642; F1-score
+                - &#9642; ROC-AUC
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-## **Steps to Reproduce** (Level 2) 
-
-Ordered List:
-1. Clone this repo.
-2. Acquire the data from SQL DB.
-3. Put the Data in the Cloned Repo Directory.
-4. Run the Jupyter Notebook
-5. Run the Notebook.
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-## **Takeaways and Conclusions** (Level 2) 
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-## **Recommendations**(Level2)
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-### **Sub-subheader** (Level 3)
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+## **Data Dictionary** 
+---------------------------------------------------------------------------------------
+| Feature         | Description                                       |  Data Type    |       
+| ----------------| ------------------------------------------------------------------|
+|CustomerID       | Unique identifier for each customer	              |String         |
+|Gender           |	Gender of the customer	                          |Categorical    |
+|SeniorCitizen	  |Whether the customer is a senior citizen   	      |Binary|        |
+|Partner	        |Whether the customer has a partner	                |Binary         | 
+|Dependents	      |Whether the customer has dependents	              |Binary         |
+|Tenure	          |Number of months the customer has stayed	          |Numeric        |
+|PhoneService	    |Whether the customer has phone service	            |Binary         |
+|MultipleLines	  |Whether the customer has multiple lines	          |Categorical    |
+|InternetService	|Type of internet service	                          |Categorical    |
+|OnlineSecurity	  |Whether the customer has online security	          |Categorical    |
+|OnlineBackup	    |Whether the customer has online backup	            |Categorical    |
+|DeviceProtection	|Whether the customer has device protection	        |Categorical    |
+|TechSupport	    |Whether the customer has tech support	            |Categorical    |
+|StreamingTV	    |Whether the customer has streaming TV	            |Categorical    |
+|StreamingMovies	|Whether the customer has streaming movies	        |Categorical    |
+|Contract	        |Contract term (month-to-month, one year, two year)	|Categorical    |
+|PaperlessBilling	|Whether the customer uses paperless billing	      |Binary         |
+|PaymentMethod	  |Payment method used by the customer	              |Categorical    |
+|MonthlyCharges	  |Monthly charges for services	                      |Numeric        |
+|TotalCharges	    |Total charges for services	                        |Numeric        |
+|Churn	          |Whether the customer churned	                      |Binary         |
+---------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Chess Upsets
-Project Description
-Chess is widely renowned as one of the most skill intensive games ever invented. Both sides begin the game with identical pieces in an identical position, there are no random elements (aside from assigning the first move), and the movement of those pieces during a game can result in over 121 million possible combinations in just the fist three moves. Because of this, the player with the most skill is likely to win the grand majority of chess games. I have decided to look into the different elements of a chess game to determine if any of them increase or decrease the chance of a player with lower skill defeating a player with greater skill.
+## **Steps to Reproduce** 
 
-Project Goal
-Discover drivers of upsets in chess games played on Lichess.org
-Use drivers to develop a machine learning model to classify games as ending in upset or not ending in upset
-An upset is defined as a lower rated player defeating a higher rated player.
-This information could be used to further our understanding of which game elements contribute to or detract from a game’s skill intensity.
-Initial Thoughts
-My initial hypothesis is that drivers of upsets will be elements that either grant an outright advantage to one player or increase the likelihood of players making mistakes.
+## Ordered List:
+     1. Clone this repo.
+     2. Acquire the data from SQL DB.
+     3. Run data preprocessing and feature engineering scripts
+     4. Explore data using provided notebooks.
+     5. Train and evaluate models using the provided notebook.
+     6. Replicate the churn prediction process using the provided instructions.
 
-The Plan
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-README
-Your README should contain all of the following elements:
 
-Title Gives the name of your project
-Project Description Describes what your project is and why it is important
-Project Goal Clearly states what your project sets out to do and how the information gained can be applied to the real world
-Initial Hypotheses Initial questions used to focus your project
-Project Plan Guides the reader through the different stages of the pipeline as they relate to your project
-Data Dictionary Gives a definition for each of the features used in your report and the units they are measured in, if applicable
-Steps to Reproduce Gives instructions for reproducing your work. i.e. Running your notebook on someone else's computer.
+## **Recommendations**
+
+## Actionable strategies based on project's insights:
+    - &#9733; Contract Incentives
+    - &#9733; Pricing Optimization
+    - &#9733; Targeted Marketing
+    - &#9733; Continuous Analysis
+    - &#9733; Customer Support Enhancements
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## **Takeaways and Conclusions** 
+
+In conclusion, this analysis sheds light on key factors influencing customer churn at the Telco company. Contract type, service quality for DSL customers, seasonality effects, and pricing structures have emerged as significant contributors to attrition. By implementing targeted strategies, such as offering incentives for longer contracts, improving DSL service quality, and optimizing pricing, the Telco can enhance customer retention and satisfaction.
+
+It is clear that a proactive approach to customer engagement, improved communication during critical periods, and the continuous analysis of customer behavior will play a pivotal role in reducing churn and ensuring the Telco's long-term success. By leveraging these insights and implementing the recommended actions, the Telco can cultivate lasting customer relationships and achieve sustainable business growth.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
