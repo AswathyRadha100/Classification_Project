@@ -21,8 +21,10 @@ import numpy as np
 import env
 import acquire
 
-#------------------- import splitting functions-------------------
+#------------------- import for splitting dataset-------------------
 from sklearn.model_selection import train_test_split
+
+#------------------- Import for handling missing values in the dataset--------------- 
 from sklearn.impute import SimpleImputer
 
 
@@ -71,12 +73,14 @@ def prep_telco():
     # removing duplicate columns
     telco = telco.loc[:, ~telco.columns.duplicated()].copy()
     
-    # List of categorical, binary, and numerical columns
+    # List of categorical columns
     categorical_columns = ['multiple_lines', 'online_security', 'online_backup', 'payment_type',
                            'contract_type', 'tech_support', 'streaming_tv', 'streaming_movies',
                            'device_protection']
+    # List of binary column
     binary_columns = ['partner', 'dependents', 'phone_service', 'paperless_billing', 'churn']
     
+    # numerical column
     numerical_columns = ['total_charges']
 
     # Preprocess categorical columns
@@ -130,8 +134,4 @@ def split_function(df, target_varible):
                                    stratify= train[target_varible])
     return train, validate, test
 # -
-
-
-
-
 
