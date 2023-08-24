@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #                                                                                                                                                                      #
-# **Investigating Drivers For Telco customer churn - A project on Machine Learning Classification Models**                                               
+# **Investigating Drivers For Telco customer churn **                                               
 #                                                                                                                                                                      # 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -67,31 +67,34 @@
 
 
 ## **Data Dictionary** 
----------------------------------------------------------------------------------------
-| Feature         | Description                                       |  Data Type    |       
-| ----------------| ------------------------------------------------------------------|
-|CustomerID       | Unique identifier for each customer	              |String         |
-|Gender           |	Gender of the customer	                          |Categorical    |
-|SeniorCitizen	  |Whether the customer is a senior citizen   	      |Binary|        |
-|Partner	        |Whether the customer has a partner	                |Binary         | 
-|Dependents	      |Whether the customer has dependents	              |Binary         |
-|Tenure	          |Number of months the customer has stayed	          |Numeric        |
-|PhoneService	    |Whether the customer has phone service	            |Binary         |
-|MultipleLines	  |Whether the customer has multiple lines	          |Categorical    |
-|InternetService	|Type of internet service	                          |Categorical    |
-|OnlineSecurity	  |Whether the customer has online security	          |Categorical    |
-|OnlineBackup	    |Whether the customer has online backup	            |Categorical    |
-|DeviceProtection	|Whether the customer has device protection	        |Categorical    |
-|TechSupport	    |Whether the customer has tech support	            |Categorical    |
-|StreamingTV	    |Whether the customer has streaming TV	            |Categorical    |
-|StreamingMovies	|Whether the customer has streaming movies	        |Categorical    |
-|Contract	        |Contract term (month-to-month, one year, two year)	|Categorical    |
-|PaperlessBilling	|Whether the customer uses paperless billing	      |Binary         |
-|PaymentMethod	  |Payment method used by the customer	              |Categorical    |
-|MonthlyCharges	  |Monthly charges for services	                      |Numeric        |
-|TotalCharges	    |Total charges for services	                        |Numeric        |
-|Churn	          |Whether the customer churned	                      |Binary         |
----------------------------------------------------------------------------------------
+
+
+
+
+| Feature          | Description                                       | Data Type  |
+|------------------|---------------------------------------------------|------------|
+| CustomerID       | Unique identifier for each customer              | String     |
+| Gender           | Gender of the customer                           | Categorical|
+| SeniorCitizen    | Whether the customer is a senior citizen         | Binary     |
+| Partner          | Whether the customer has a partner              | Binary     |
+| Dependents       | Whether the customer has dependents             | Binary     |
+| Tenure           | Number of months the customer has stayed        | Numeric    |
+| PhoneService     | Whether the customer has phone service          | Binary     |
+| MultipleLines    | Whether the customer has multiple lines         | Categorical|
+| InternetService  | Type of internet service                        | Categorical|
+| OnlineSecurity   | Whether the customer has online security        | Categorical|
+| OnlineBackup     | Whether the customer has online backup          | Categorical|
+| DeviceProtection | Whether the customer has device protection     | Categorical|
+| TechSupport      | Whether the customer has tech support          | Categorical|
+| StreamingTV      | Whether the customer has streaming TV          | Categorical|
+| StreamingMovies  | Whether the customer has streaming movies      | Categorical|
+| Contract         | Contract term (month-to-month, one year, two year)| Categorical|
+| PaperlessBilling | Whether the customer uses paperless billing    | Binary     |
+| PaymentMethod    | Payment method used by the customer            | Categorical|
+| MonthlyCharges   | Monthly charges for services                   | Numeric    |
+| TotalCharges     | Total charges for services                     | Numeric    |
+| Churn            | Whether the customer churned                   | Binary     |
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -112,11 +115,11 @@
 ## **Recommendations**
 
 ## Actionable strategies based on project's insights:
-    - &#9733; Contract Incentives
-    - &#9733; Pricing Optimization
-    - &#9733; Targeted Marketing
-    - &#9733; Continuous Analysis
-    - &#9733; Customer Support Enhancements
+- &#9733; Contract Incentives
+- &#9733; Pricing Optimization
+- &#9733; Targeted Marketing
+- &#9733; Continuous Analysis
+- &#9733; Customer Support Enhancements
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
