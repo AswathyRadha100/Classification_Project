@@ -34,34 +34,34 @@
 
 - &#9733; Acquire data from SQL:
 - &#9733; Prepare data that's acquired:
-       - ** Feature Selection/Engineering
-           - &#9642; Encoding categorical columns
-           - &#9642; Encoding binary columns
-           - &#9642; preprocess_numerical_columns
+  -  Feature Selection/Engineering
+     - &#9642; Encoding categorical columns
+     - &#9642; Encoding binary columns
+     - &#9642; preprocess_numerical_columns
 - &#9733; Explore data in search of drivers of churn:
-      - **  Answer the following initial questions
-           - &#9642; Why are customers churning?
-           - &#9642; What can stop them ?
-           - &#9642; How does it affect the company?  
-           - &#9642; Is the company's service quality adequate?  
-           - &#9642; Is the pricing competitive?
+  -  Answer the following initial questions
+     - &#9642; Why are customers churning?
+     - &#9642; What can stop them ?
+     - &#9642; How does it affect the company?  
+     - &#9642; Is the company's service quality adequate?  
+     - &#9642; Is the pricing competitive?
 
 - &#9733; Model Selection:
-      - **  Choose classification algorithms 
-           - &#9642; Logistic Regression
-           - &#9642; Random Forest
-           - &#9642; K-Nearest Neighbors (KNN)
+  -   Choose classification algorithms 
+     - &#9642; Logistic Regression
+     - &#9642; Random Forest
+     - &#9642; K-Nearest Neighbors (KNN)
 - &#9733; Data Splitting and Model Training:
-      - **  Divide the dataset into train,validate,test 
-           - &#9642; Train chosen models on training dataset             
+  -  Divide the dataset into train,validate,test 
+     - &#9642; Train chosen models on training dataset             
 - &#9733; Model Evaluation:
-      - **  Check performance of models on test/validate dataset
-      - **  metrics used 
-                - &#9642; accuracy
-                - &#9642; precision
-                - &#9642; recall
-                - &#9642; F1-score
-                - &#9642; ROC-AUC
+  -   Check performance of models on test/validate dataset
+  - metrics used 
+     - &#9642; accuracy
+     - &#9642; precision
+     - &#9642; recall
+     - &#9642; F1-score
+     - &#9642; ROC-AUC
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
