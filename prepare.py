@@ -24,92 +24,71 @@ import acquire
 #------------------- import for splitting dataset-------------------
 from sklearn.model_selection import train_test_split
 
-#------------------- Import for handling missing values in the dataset--------------- 
-from sklearn.impute import SimpleImputer
-
-
 
 
 # +
 #-------------------Data prepping for Telco -------------------------------------- 
 
-def preprocess_categorical_columns(df, columns):
-    '''
-     Encoding categorical columns using one-hot encoding
-    ''' 
-    encoded_df = pd.get_dummies(df[columns], dtype=int, drop_first=True)
-    return encoded_df
-
-def preprocess_binary_columns(df, columns):
-    '''
-     Encoding binary columns by mapping 'Yes' to 1 and 'No' to 0
-    '''
-    for col in columns:
-        df[f'{col.lower()}_encoded'] = df[col].map({'Yes': 1, 'No': 0})
-    return df
-
-    def preprocess_numerical_columns(df, columns):
-      '''  
-       Converting 'total_charges' to float after replacing empty spaces with '0'
-      '''
-    df['total_charges'] = df['total_charges'].str.replace(' ', '0').astype('float')
-    return df
-
-def encode_target_variable(df, target_column):
-    '''
-      Encoding the target variable by mapping 'Yes' to 1 and 'No' to 0
-     ''' 
-    df[f'{target_column.lower()}_encoded'] = df[target_column].map({'Yes': 1, 'No': 0})
-    return df
 
 def prep_telco():
-    '''
-    Pulls data from mySql server and preprocesses it for analysis.
-    '''
+    
     # pulling data from mysql 
     telco = acquire.get_telco_data('telco_churn')
     
+    # Remove rows with missing values
+    telco = telco.dropna()
     
-    # removing duplicate columns
+    # Remove duplicate columns
     telco = telco.loc[:, ~telco.columns.duplicated()].copy()
     
+    # Convert column names to lowercase
+    telco.columns = map(str.lower, telco.columns)
+    
+    # List of binary columns
+    binary_columns = ['partner', 'dependents', 'phone_service', 'paperless_billing', 'churn']
+    
+    
+    
+
+
     # List of categorical columns
     categorical_columns = ['multiple_lines', 'online_security', 'online_backup', 'payment_type',
                            'contract_type', 'tech_support', 'streaming_tv', 'streaming_movies',
                            'device_protection']
-    # List of binary column
-    binary_columns = ['partner', 'dependents', 'phone_service', 'paperless_billing', 'churn']
     
-    # numerical column
-    numerical_columns = ['total_charges']
-
+    
+    
     # Preprocess categorical columns
-    encoded_categorical_df = preprocess_categorical_columns(telco, categorical_columns)
+    encoded_categorical_df = pd.get_dummies(telco[categorical_columns], dtype=int, drop_first=True)
     telco = pd.concat([telco, encoded_categorical_df], axis=1)
-
-    # Preprocess binary columns
-    telco = preprocess_binary_columns(telco, binary_columns)
     
+    
+    
+    # Preprocess binary columns
+    for col in binary_columns:
+        telco[f'{col.lower()}_encoded'] = telco[col].map({'Yes': 1, 'No': 0})
+        
 
     # Encode the 'gender' column
     telco['gender_encoded'] = telco['gender'].map({'Female': 1, 'Male': 0})
-
     
     
-    # Preprocess numerical columns
-    telco = preprocess_numerical_columns(telco, numerical_columns)
+    # Encode 'churn_encoded'
+    telco['churn_encoded'] = telco['churn'].map({'Yes': 1, 'No': 0})
     
-    
-    # Encode target variable
-    telco = encode_target_variable(telco, 'churn')
-
     # Create a binary column based on 'contract type'
     telco['contract_type_month_to_month'] = (telco['contract_type'] == 'Month-to-month').astype('int')
     
     
-    # Convert column names to lowercase
-    telco.columns = map(str.lower, telco.columns)
-
+    
+    
+    # List of numerical columns
+    numerical_columns = ['total_charges']
+    
+    # Preprocess numerical columns
+    telco['total_charges'] = telco['total_charges'].str.replace(' ', '0').astype('float')
+    
+    
     return telco
 
 
