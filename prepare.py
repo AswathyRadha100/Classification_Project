@@ -13,11 +13,14 @@
 # ---
 
 # +
+#------------------- Tabular data imports------------------- 
 import pandas as pd
 import numpy as np
+
+#-------------------Import custom libraries ------------------- 
 import env
 import acquire
-import os
+
 #------------------- import splitting functions-------------------
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
@@ -26,24 +29,34 @@ from sklearn.impute import SimpleImputer
 
 
 # +
+#-------------------Data prepping for Telco -------------------------------------- 
+
 def preprocess_categorical_columns(df, columns):
-    # Encoding categorical columns using one-hot encoding
+    '''
+     Encoding categorical columns using one-hot encoding
+    ''' 
     encoded_df = pd.get_dummies(df[columns], dtype=int, drop_first=True)
     return encoded_df
 
 def preprocess_binary_columns(df, columns):
-    # Encoding binary columns by mapping 'Yes' to 1 and 'No' to 0
+    '''
+     Encoding binary columns by mapping 'Yes' to 1 and 'No' to 0
+    '''
     for col in columns:
         df[f'{col.lower()}_encoded'] = df[col].map({'Yes': 1, 'No': 0})
     return df
 
-def preprocess_numerical_columns(df, columns):
-    # Converting 'total_charges' to float after replacing empty spaces with '0'
+    def preprocess_numerical_columns(df, columns):
+      '''  
+       Converting 'total_charges' to float after replacing empty spaces with '0'
+      '''
     df['total_charges'] = df['total_charges'].str.replace(' ', '0').astype('float')
     return df
 
 def encode_target_variable(df, target_column):
-    # Encoding the target variable by mapping 'Yes' to 1 and 'No' to 0
+    '''
+      Encoding the target variable by mapping 'Yes' to 1 and 'No' to 0
+     ''' 
     df[f'{target_column.lower()}_encoded'] = df[target_column].map({'Yes': 1, 'No': 0})
     return df
 
@@ -51,8 +64,10 @@ def prep_telco():
     '''
     Pulls data from mySql server and preprocesses it for analysis.
     '''
-    # pulling data from mysql using get_telco_data
+    # pulling data from mysql 
     telco = acquire.get_telco_data('telco_churn')
+    
+    
     # removing duplicate columns
     telco = telco.loc[:, ~telco.columns.duplicated()].copy()
     
@@ -61,6 +76,7 @@ def prep_telco():
                            'contract_type', 'tech_support', 'streaming_tv', 'streaming_movies',
                            'device_protection']
     binary_columns = ['partner', 'dependents', 'phone_service', 'paperless_billing', 'churn']
+    
     numerical_columns = ['total_charges']
 
     # Preprocess categorical columns
@@ -83,15 +99,14 @@ def prep_telco():
     # Encode target variable
     telco = encode_target_variable(telco, 'churn')
 
-    # Create a binary column 'contract_type_month_to_month' based on contract type
+    # Create a binary column based on 'contract type'
     telco['contract_type_month_to_month'] = (telco['contract_type'] == 'Month-to-month').astype('int')
+    
+    
     # Convert column names to lowercase
     telco.columns = map(str.lower, telco.columns)
 
     return telco
-
-# -
-
 
 
 # +
